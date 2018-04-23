@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Instances Vue JS</title>
+	<meta charset="utf-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+</head>
+<body>
+	<script>
+		var data = { a : 1 }
+		var vm = new Vue({
+			data : data
+		})
+		// vm.a == data.a
+		vm.a = 2
+		console.log(data.a);
+
+		data.a = 3
+		console.log(vm.a);
+	</script>
+
+	<div id="app">
+		<p>{{ foo }}</p>
+		<button v-on:click="foo = 'baz'">Changer</button>
+	</div>
+	<script>
+	var obj = { foo : 'bar' }
+		Object.freeze(obj); //Cette ligne empêche l'objet obj de changer au clic du bouton
+		var app = new Vue({
+			el : "#app",
+			data : obj
+		})
+	</script>
+
+	<script>
+		var data = { a : 1 }
+		var vm2 = new Vue ({
+			el : "#exemple",
+			data : data
+		})
+		vm2.$data === data; //true
+		vm2.$el === document.getElementById("exemple"); //true
+	</script>
+
+	<script>
+		var vm3 = new Vue ({
+			data : {
+				a : 156149
+			},
+			created: function(){ //created est un hook d'une instance. Pour voir le schéma des hooks : voir la doc
+				console.log( 'a is ' + this.a ); // this fait référence à la variable vm3
+			}
+		})
+	</script>
+</body>
+</html>
