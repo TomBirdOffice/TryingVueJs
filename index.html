@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue</title>
+	<meta charset="utf-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{ message }}
+	</div>
+	<script>
+		var app = new Vue({
+			el : '#app',
+			data : {
+				message : 'Hello Vue !'
+			}
+		})
+	</script>
+
+	<div id="app-2">
+		<span v-bind:title="message">
+			Laisser la souris sur le message pour afficher le titre
+		</span>
+	</div>
+	<script>
+		var app2 = new Vue({
+			el : '#app-2',
+			data : {
+				message : 'Vous avez affiché le message le ' + new Date().toLocaleString()
+			}
+		})
+	</script>
+
+	<div id="app-3">
+		<p v-if="seen">
+			Maintenant vous me voyez
+		</p>	
+	</div>
+	<script>
+		var app3 = new Vue({
+			el : '#app-3',
+			data : {
+				seen : true
+			}
+		})
+	</script>
+
+	<div id="app-4">
+		<ol>
+			<li v-for="todo in todos">
+				{{ todo.text }}
+			</li>
+		</ol>
+	</div>
+	<script>
+		var app4 = new Vue({
+			el : '#app-4',
+			data : {
+				todos : [
+					{ text : 'Apprendre VueJS' },
+					{ text : 'Pour dynamiser BO' },
+					{ text : 'Grâce à l\'API de Paolo' }
+				]
+			}
+		})
+	</script>
+	
+
+	<div id="app-5">
+		<p>{{ message }}</p>
+		<button v-on:click="reverseMessage">Message retourné</button>
+	</div>
+	<script>
+		var app5 = new Vue({
+			el : '#app-5',
+			data : {
+				message : 'Woooooh j\'ai la tête à l\'envers !!!'
+			},
+			methods : {
+				reverseMessage: function(){
+					this.message = this.message.split('').reverse('').join('')
+				}
+			}
+		})
+	</script>
+
+	<div id="app-6">
+		<p>{{ message }}</p>
+		<input v-model="message">
+	</div>
+	<script>
+		var app6 = new Vue({
+			el : '#app-6',
+			data : {
+				message : 'Champ du formulaire'
+			}
+		})
+	</script>
+
+	<div id="app-7">
+		<ol>
+			<todo-item
+			v-for="item in groceryList"
+			v-bind:todo="item"
+			v-bind:key="item.id"></todo-item>
+		</ol>
+	</div>
+	<script>
+		Vue.component('todo-item', {
+			props : ['todo'],
+			template : '<li>{{ todo.text }}</li>',
+		})
+		var app7 = new Vue({
+			el : '#app-7',
+			data : {
+				groceryList : [
+					{ id : 0, text:"Régis" },
+					{ id : 1, text:"Kévin" },
+					{ id : 2, text:"Tom" }
+				]
+			}
+		})
+	</script>
+</body>
+</html>
