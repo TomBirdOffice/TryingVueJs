@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <p>{{ message }}</p>
   </div>
 </template>
 
@@ -14,6 +13,14 @@ export default {
     HelloWorld
   }
 }
+
+let test = new Vue({
+  el : '#app',
+  data : {
+    message : 'Salut les mecs'
+  }
+})
+
 </script>
 
 <style>
