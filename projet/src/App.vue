@@ -30,7 +30,11 @@
       </li>
       -->
     </ul>
+
+
+    <component2></component2>
   </div>
+
 </template>
 
 <script>
