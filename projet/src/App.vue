@@ -16,6 +16,19 @@
           <li v-for="(item, key) in user.company">{{ key }} : {{ item }}</li>
         </ul>
       </li>
+      <!--
+        <li v-for="(item, key, index) in user">
+        <span v-if="key == 'address' || key == 'geo' || key == 'company'">    FAÇON PLUS OPTIMISÉE DE D'APPELER LES DONNÉES DE L'OBJET
+          {{ index }} : {{ key }}
+        </span>
+        <span v-else>
+          {{ index }} : {{ key }} : {{ item }}
+        </span>
+        <ul v-if="key == 'address' || key == 'geo' || key == 'company'">
+          <li v-for="(subitem, key) in item">{{ key }} : {{ subitem }}</li>
+        </ul>
+      </li>
+      -->
     </ul>
   </div>
 </template>
