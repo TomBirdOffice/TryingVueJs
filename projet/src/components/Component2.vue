@@ -3,13 +3,13 @@
     <ul>
       <li v-for="(item, key, index) in pictures">
         <span v-if="key == 'url'">
-          {{ index }} : {{ key }} : <img :src="pictures.url">
+          {{ key }} : <img :src="pictures.url">
         </span>
         <span v-else-if="key == 'thumbnailUrl'">
-          {{ index }} : {{ key }} : <img :src="pictures.thumbnailUrl">
+          {{ key }} : <img :src="pictures.thumbnailUrl">
         </span>
         <span v-else>
-          {{ index }} : {{ key }} : {{ item }}
+          {{ key }} : {{ item }}
         </span>
       </li>
     </ul>
