@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <ul v-for="user in users">
+    <ul v-for="user in users" class="list">
         <li v-for="(item, key) in user">
           <span v-if="key != 'address' && key != 'company'">
             {{ key }} : {{ item }}
@@ -81,4 +81,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+  .list{
+    padding-bottom: 30px;
+  }
 </style>

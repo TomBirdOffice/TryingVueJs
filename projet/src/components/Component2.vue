@@ -1,16 +1,8 @@
 <template>
-  <div class="pic">
-    <ul>
-      <li v-for="(item, key, index) in pictures">
-        <span v-if="key == 'url'">
-          {{ key }} : <img :src="pictures.url">
-        </span>
-        <span v-else-if="key == 'thumbnailUrl'">
-          {{ key }} : <img :src="pictures.thumbnailUrl">
-        </span>
-        <span v-else>
-          {{ key }} : {{ item }}
-        </span>
+  <div class="posts">
+    <ul v-for="post in posts" class="list">
+      <li v-for="(content, key) in post">
+        {{ key }} : {{ content }}
       </li>
     </ul>
   </div>
@@ -21,14 +13,16 @@
     name: "component2",
     data() {
       return {
-        pictures: {
-          albumId: 1,
-          id: 1,
-          title: "accusamus beatae ad facilis cum similique qui sunt",
-          url: "http://placehold.it/600/92c952",
-          thumbnailUrl: "http://placehold.it/150/92c952"
-        }
+        posts: {}
       }
+    },
+    created(){
+      let vm = this
+      this.$http
+        .get('https://jsonplaceholder.typicode.com/posts')
+        .then(function(response){
+          vm.posts = response.data
+        })
     }
   }
 
